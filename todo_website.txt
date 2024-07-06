@@ -1,0 +1,11 @@
+FEATURES
+1. todo app heading
+2. input element: enter tasks
+3. add button: adds the new task
+4. remove button: removes a particular task
+5. edit button: edits text of a particular task
+
+HINTS
+1. chai aur javascript playlist: video no. 34
+	1.1. create new element
+	1.2. edit/remove element
