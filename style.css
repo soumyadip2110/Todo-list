@@ -20,3 +20,44 @@ body{
 .heading{
     margin: 30px auto;
 }
+
+.all-tasks-container{
+    border: 1px solid white;
+    /* height: 30px; */
+    min-height: 100px;
+    width: 500px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.all-tasks-container > h3{
+    margin-top: 10px;
+}
+
+.all-tasks-container-secondary{
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 475px;
+    border: 1px solid white;
+}
+
+.task-box{
+    border: 1px solid white;
+    margin: 5px;
+    width: 450px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remove-btn{
+    height: 25px;
+    width: 100px;
+    margin: auto 5px;
+}
