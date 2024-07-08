@@ -1,12 +1,14 @@
+window.onload = displayTasks()
+
 const addTaskBtn = document.getElementById('add-task')
 
 addTaskBtn.addEventListener('click', () => {
     let taskInput = document.getElementById('task-input').value
-    // console.log(taskInput);
-    addNewTask(taskInput)
+    saveTask(taskInput)
+    displayTasks()
 })
 
-function addNewTask(task){
+function addNewTask(task, index){
     const allTasksBox = document.querySelector('.all-tasks-container-secondary')
 
     const taskDiv = document.createElement('div')
@@ -14,13 +16,13 @@ function addNewTask(task){
     
     const taskTextDiv = createTaskTextDiv(task)    
     const removeBtn = createRemoveBtn()
-    addClickEvent(removeBtn)
+    addRemoveEvent(removeBtn, index)
 
     taskDiv.appendChild(taskTextDiv)
     taskDiv.appendChild(removeBtn)
     
-    // console.log(taskDiv);
     allTasksBox.appendChild(taskDiv)
+
 }
 
 function createTaskTextDiv(text){
@@ -43,11 +45,38 @@ function createRemoveBtn(){
     return removeBtn
 }
 
-function addClickEvent(btn){
+function addRemoveEvent(btn, index){
     btn.addEventListener('click', () => {
-        // alert('working')
-        const taskToRemove = btn.parentElement
-        // console.log(taskToRemove);
-        taskToRemove.remove()
+        const allTasks = JSON.parse(window.localStorage.getItem('tasks'))
+        let updatedAllTasks = JSON.stringify(
+            allTasks.filter((task, idx) => {
+                return idx !== index;
+            })
+        )
+        window.localStorage.setItem('tasks', updatedAllTasks)
+        displayTasks()
     })
+}
+
+function saveTask(task){
+    let allTasks;
+    if (!window.localStorage.getItem('tasks')){
+        allTasks = []
+    } else {
+        allTasks = JSON.parse(window.localStorage.getItem('tasks'))
+    }
+    allTasks.push(task)
+    allTasks = JSON.stringify(allTasks)
+    window.localStorage.setItem('tasks', allTasks)
+}
+
+function displayTasks(){
+    const allTasksBox = document.querySelector('.all-tasks-container-secondary')
+    allTasksBox.innerHTML = ''
+    const allTasks = JSON.parse(window.localStorage.getItem('tasks'))
+    if (allTasks){
+        allTasks.forEach((task, index) => {
+            addNewTask(task, index)
+        })
+    }
 }
