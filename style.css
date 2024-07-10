@@ -21,15 +21,16 @@ body{
     margin: 30px auto;
 }
 
+.new-task-container{
+    display: flex;
+}
+
 .all-tasks-container{
     border: 1px solid white;
-    /* height: 30px; */
-    min-height: 100px;
     width: 500px;
     margin: 20px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
 }
 
@@ -45,19 +46,21 @@ body{
     justify-content: center;
     align-items: center;
     width: 475px;
-    border: 1px solid white;
 }
 
 .task-box{
-    border: 1px solid white;
     margin: 5px;
     width: 450px;
     display: flex;
     justify-content: space-between;
 }
 
+.task-text-box{
+    width: 300px;
+}
+
 .remove-btn{
     height: 25px;
-    width: 100px;
+    /* width: 100px; */
     margin: auto 5px;
 }
